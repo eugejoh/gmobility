@@ -35,7 +35,8 @@ get_regions <- function(x, region = c(1,2,3)) {
   
   rm_cols <- names(keep(map_lgl(x0, ~sum(is.na(.)) == nrow(x0)), isTRUE))
   
-  x <- x %>% select(-all_of(rm_cols))
+  x <- x %>% 
+    select(-all_of(rm_cols))
   
   x <- left_join(x, prov_df %>% select(-country), by = c("sub_region_1" = "prov_names"))
   
