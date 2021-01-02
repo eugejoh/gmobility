@@ -31,6 +31,8 @@ x0 <- get_CANgmobility("https://www.gstatic.com/covid19/mobility/Region_Mobility
 # intialize/connect DB
 conn <- dbConnect(RSQLite::SQLite(), "gmobility.db")
 
+
+
 # canada
 d_reg <- get_regions(x0, 1)
 

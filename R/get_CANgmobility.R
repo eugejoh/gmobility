@@ -25,8 +25,7 @@ get_CANgmobility <- function(url = "https://www.gstatic.com/covid19/mobility/Reg
   data <- read_csv(unz(temp, target_name), col_types = cols(.default = col_character()))
   unlink(temp)
   
+  message("max date: ",max(as.Date(data$date), na.rm = TRUE))
   return(data)
   
-  message("max date: ",max(as.Date(data$date), na.rm = TRUE))
-   
 }
