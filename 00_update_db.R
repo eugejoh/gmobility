@@ -5,24 +5,6 @@ library(purrr)
 library(RSQLite)
 library(DBI)
 
-# create province table
-prov_df <- tibble(
-  country = c("Canada"),
-  prov_names = c("Alberta",
-                 "British Columbia",
-                 "Manitoba",
-                 "New Brunswick",
-                 "Newfoundland and Labrador",
-                 "Northwest Territories",
-                 "Nova Scotia",
-                 "Nunavut",
-                 "Ontario",
-                 "Prince Edward Island",
-                 "Quebec",
-                 "Saskatchewan",
-                 "Yukon"),
-  prov_abb = c("AB", "BC", "MB", "NB", "NL", "NT", "NS", "NU", "ON", "PE", "QC", "SK", "YT"))
-
 # load fnc
 sapply(list.files("R", full.names = T), source, encoding = "UTF-8")
 
