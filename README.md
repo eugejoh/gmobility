@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# Get Canadian Google Mobility Reports Data
+# Get Canadian COVID-19 Google Mobility Reports Data
 
 Pet project to understand more of SQLite, R Shiny, and data
 visualization on Windows 10 x64. Contains R code to download and process
