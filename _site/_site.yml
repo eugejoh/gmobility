@@ -1,5 +1,5 @@
 name: "Canadian Google Mobility Reports"
-output_dir: "docs"
+output_dir: "../docs"
 navbar:
   title: "Canadian Google Mobility Reports"
 left:
