@@ -3,7 +3,7 @@
 
 # Get Canadian COVID-19 Google Mobility Reports Data
 
-Pet project to understand more of SQLite, R Shiny, and data
+Pet project to understand more of SQLite, R Shiny, GitHub Pages, and data
 visualization on Windows 10 x64. Contains R code to download and process
 [Google Mobility data](https://www.google.com/covid19/mobility/) for
 only [Canadian
