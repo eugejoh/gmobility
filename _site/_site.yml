@@ -2,11 +2,11 @@ name: "Canadian Google Mobility Reports"
 output_dir: "../docs"
 navbar:
   title: "Canadian Google Mobility Reports"
-left:
-  - text: "Home"
-    href: index.html
-  - text: "Figures"
-    href: heatmaps.html
+  left:
+    - text: "Home"
+      href: index.html
+    - text: "Figures"
+      href: heatmaps.html
 output:
   html_document:
     theme: cosmo
