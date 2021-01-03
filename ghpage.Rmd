@@ -1,0 +1,33 @@
+---
+title: "Canadian Google Mobility Reports Data"
+author: ""
+date: 'r Sys.Date()'
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+
+## List of Outputs
+
+- [Percent Change in Mobility Heatmaps by province/territory](#heatmaps-by-province-and-territory)
+- [Percent Change in Mobility Heatmaps by municipality in Ontario](#heatmaps-in-ontario)
+
+# Heatmaps by Province and Territory
+
+Percent change in mobility compared to [baseline](https://support.google.com/covid19-mobility/answer/9824897?hl=en&ref_topic=9822927#) as a 7-day moving average for provinces and territories.
+```{r p_heatmaps, echo=FALSE}
+knitr::include_graphics(path = file.path(here::here("output"), list.files(here::here("output"), pattern = "heatmap_")))
+```
+
+
+# Heatmaps in Ontario
+
+Percent change in mobility compared to [baseline](https://support.google.com/covid19-mobility/answer/9824897?hl=en&ref_topic=9822927#) as a 7-day moving average for municipalities across province of Ontario.
+
+```{r on_heatmaps, echo=FALSE}
+knitr::include_graphics(path = file.path(here::here("output"), list.files(here::here("output"), pattern = "heatmapON_")))
+```
+
