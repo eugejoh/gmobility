@@ -52,7 +52,7 @@ p_heatmaps <- prov_proc4plot %>%
 
 # save output
 walk2(names(p_heatmaps), p_heatmaps, function(nm, p) {
-  ggsave(filename = here("output", paste0("heatmap_", nm, ".png")), plot = p, dpi = 300, type = "cairo", width = 8, height = 4)
+  ggsave(filename = here("output", paste0("heatmap_", nm, "_", max(prov$date, na.rm = TRUE), ".png")), plot = p, dpi = 300, type = "cairo", width = 8, height = 4)
 })
 
 # get Ontario table
@@ -85,7 +85,7 @@ on_heatmaps <- on_proc4plot %>%
   
 # save output
 walk2(names(on_heatmaps), on_heatmaps, function(nm, p) {
-  ggsave(filename = here("output", paste0("heatmapON_", nm, ".png")), plot = p, dpi = 300, type = "cairo", width = 8, height = 10)
+  ggsave(filename = here("output", paste0("heatmapON_", nm, "_", max(prov$date, na.rm = TRUE), ".png")), plot = p, dpi = 300, type = "cairo", width = 8, height = 10)
 })
 
 # disconnect

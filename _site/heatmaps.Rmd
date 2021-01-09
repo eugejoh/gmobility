@@ -16,7 +16,7 @@ knitr::opts_chunk$set(echo = FALSE)
 
 Percent change in mobility compared to [baseline](https://support.google.com/covid19-mobility/answer/9824897?hl=en&ref_topic=9822927#) as a 7-day moving average for provinces and territories.
 ```{r p_heatmaps, echo=FALSE}
-knitr::include_graphics(path = file.path("https://raw.githubusercontent.com/eugejoh/gmobility/main/output/", list.files(here::here("output"), pattern = "heatmap_")))
+knitr::include_graphics(path = file.path("https://raw.githubusercontent.com/eugejoh/gmobility/main/output/", list.files(here::here("output"), pattern = paste0("heatmap_", max_date))))
 ```
 
 
@@ -25,6 +25,6 @@ knitr::include_graphics(path = file.path("https://raw.githubusercontent.com/euge
 Percent change in mobility compared to [baseline](https://support.google.com/covid19-mobility/answer/9824897?hl=en&ref_topic=9822927#) as a 7-day moving average for municipalities across province of Ontario.
 
 ```{r on_heatmaps, echo=FALSE}
-knitr::include_graphics(path = file.path("https://raw.githubusercontent.com/eugejoh/gmobility/main/output/", list.files(here::here("output"), pattern = "heatmapON_")))
+knitr::include_graphics(path = file.path("https://raw.githubusercontent.com/eugejoh/gmobility/main/output/", list.files(here::here("output"), pattern = paste0("heatmapON_", max_date))))
 ```
 
