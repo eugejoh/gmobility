@@ -65,6 +65,7 @@ if (all(names(list2db) %in% dbListTables(conn))) {
     map2(names(append_rows), append_rows, function(x,y) dbWriteTable(conn, name = x, value = y, append = TRUE)) %>% 
       set_names(names(append_rows))
     dbDisconnect(conn) # disconnect
+    message(paste(update, collapse = ", "), " tables updated")
   } else if (all(comp)) {
     message("no update required for tables")
   }
