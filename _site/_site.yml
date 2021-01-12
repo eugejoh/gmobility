@@ -1,11 +1,11 @@
-name: "Canadian Google Mobility Reports"
+name: "Canadian COVID-19 Google Mobility Reports"
 output_dir: "../docs"
 navbar:
-  title: "Canadian Google Mobility Reports"
+  title: "Canadian COVID-19 Google Mobility Reports"
   left:
     - text: "Home"
       href: index.html
-    - text: "Figures"
+    - text: "Heatmaps"
       href: heatmaps.html
 output:
   html_document:
