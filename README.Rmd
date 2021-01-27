@@ -20,4 +20,4 @@ Pet project to understand more of SQLite, R Shiny, and data visualization on `r 
 3. Store into local SQLite database
 4. Read tables from SQLite and feed into downstream workflows
 
-Last updated: `r Sys.Date()`
+Last updated: `r Sys.Date()` 
