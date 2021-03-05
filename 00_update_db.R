@@ -58,7 +58,8 @@ if (all(names(list2db) %in% dbListTables(conn))) {
     # get new rows
     append_rows <- map(update, function(i) {
       anti_join(list2db[[i]], read_db(conn, i),
-                by = c("country_region_code", "country_region", "sub_region_1", "sub_region_2", "iso_3166_2_code", "date", "prov_abb"))
+                by = c("country_region_code", "country_region", "sub_region_1", "sub_region_2", "iso_3166_2_code", "date", "prov_abb")) %>% 
+        select(-place_id)
     }) %>% 
       set_names(update)
     
