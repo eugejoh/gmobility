@@ -15,17 +15,23 @@
 #' }
 #' 
 get_CANgmobility <- function(url = "https://www.gstatic.com/covid19/mobility/Region_Mobility_Report_CSVs.zip") {
-  
-  target_name <- "2020_CA_Region_Mobility_Report.csv"
-  
+  regex <- "^202[01]_CA.*\\.csv$"
   
   temp <- tempfile()
   download.file(url = url, destfile = temp)
   
-  data <- read_csv(unz(temp, target_name))
+  zipfiles <- unzip(temp, list = TRUE)
+  CAfiles <- zipfiles[["Name"]][grepl(regex, zipfiles[["Name"]])]
+  
+  if (length(CAfiles) > 1) {
+    out <- do.call("rbind",lapply(CAfiles, function(x) {read_csv(unz(temp, x))}))
+  } else if (length(CAfiles) == 1) {
+    out <- read_csv(unz(temp, target_name))
+  }
+  
   unlink(temp)
   
-  message("max date: ",max(as.Date(data$date), na.rm = TRUE))
-  return(data)
+  message("max date: ",max(as.Date(out$date), na.rm = TRUE))
+  return(out)
   
 }
