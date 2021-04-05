@@ -6,6 +6,13 @@ library(purrr)
 library(RSQLite)
 library(DBI)
 library(rmarkdown)
+library(zoo)
+library(extrafont)
+library(tidyr)
+library(lubridate)
+library(ggplot2)
+library(scales)
+library(tools)
 
 # update DB
 source(here::here("00_update_db.r"))

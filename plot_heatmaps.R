@@ -1,17 +1,10 @@
-library(here)
-library(dplyr)
-library(purrr)
-library(RSQLite)
-library(tidyr)
-library(lubridate)
-library(ggplot2)
-library(scales)
-library(tools)
-library(zoo)
-library(extrafont)
 
 # prep
-loadfonts("win", quiet = TRUE)
+if (.Platform$OS.type == "windows") {
+  loadfonts("win", quiet = TRUE)
+} else {
+  loadfonts(quiet = TRUE)
+}
 invisible(sapply(list.files("R", full.names = T), source, encoding = "UTF-8"))
 colfnc <- colorRampPalette(colors = c("#2196f3", "#FBF6C3", "#CF0B0B"))
 
@@ -27,13 +20,14 @@ prov <- read_db(conn, "sreg1")
 
 # process for plotting
 prov_proc4plot <- prov %>% 
-  select(-c(country_region_code, country_region, sub_region_2, iso_3166_2_code)) %>% 
+  select(-c(country_region_code, country_region, sub_region_2, iso_3166_2_code, place_id)) %>% 
   rename_at(vars(matches("change_from_baseline")), ~gsub("_percent_change_from_baseline$", "", .)) %>% 
   pivot_longer(-c(sub_region_1, prov_abb, date), names_to = "location", values_to = "mobility") %>% 
   group_by(sub_region_1, prov_abb, location) %>% 
   mutate(roll7 = zoo::rollapply(mobility, 7, mean, fill = NA)) %>% 
   # filter(!is.na(roll7)) %>%
   # filter(!prov_abb %in% c("NU", "YT", "NT", "PE", "NL")) %>% 
+  ungroup() %>% 
   mutate(location = factor(location))
 
 # create heatmaps for each province
@@ -53,14 +47,14 @@ p_heatmaps <- prov_proc4plot %>%
 
 # save output
 walk2(names(p_heatmaps), p_heatmaps, function(nm, p) {
-  ggsave(filename = here("output", paste0("heatmap_", nm, "_", max(prov$date, na.rm = TRUE), ".png")), plot = p, dpi = 300, type = "cairo", width = 8, height = 4)
+  ggsave(filename = here::here("output", paste0("heatmap_", nm, "_", max(prov$date, na.rm = TRUE), ".png")), plot = p, dpi = 300, type = "cairo", width = 8, height = 4)
 })
 
 # get Ontario table
 on <- read_db(conn, "sreg2_on")
 
 on_proc4plot <- on %>% 
-  select(-c(country_region_code, country_region, sub_region_1, iso_3166_2_code)) %>% 
+  select(-c(country_region_code, country_region, sub_region_1, iso_3166_2_code, place_id)) %>% 
   rename_at(vars(matches("change_from_baseline")), ~gsub("_percent_change_from_baseline$", "", .)) %>% 
   pivot_longer(-c(sub_region_2, prov_abb, date), names_to = "location", values_to = "mobility") %>% 
   mutate(wk = floor_date(date, unit = "week")) %>% 
@@ -68,6 +62,7 @@ on_proc4plot <- on %>%
   mutate(roll7 = zoo::rollapply(mobility, 7, mean, fill = NA)) %>% 
   
   # summarise(roll7 = mean(mobility, na.rm = TRUE), .groups = "drop") %>% 
+  ungroup() %>% 
   mutate(location = factor(location))
 
 on_heatmaps <- on_proc4plot %>% 
@@ -86,7 +81,7 @@ on_heatmaps <- on_proc4plot %>%
   
 # save output
 walk2(names(on_heatmaps), on_heatmaps, function(nm, p) {
-  ggsave(filename = here("output", paste0("heatmapON_", nm, "_", max(prov$date, na.rm = TRUE), ".png")), plot = p, dpi = 300, type = "cairo", width = 8, height = 10)
+  ggsave(filename = here::here("output", paste0("heatmapON_", nm, "_", max(prov$date, na.rm = TRUE), ".png")), plot = p, dpi = 300, type = "cairo", width = 8, height = 10)
 })
 
 # disconnect

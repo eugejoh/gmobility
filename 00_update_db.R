@@ -1,9 +1,3 @@
-library(here)
-library(readr)
-library(dplyr)
-library(purrr)
-library(RSQLite)
-library(DBI)
 
 # load fnc
 sapply(list.files("R", full.names = T), source, encoding = "UTF-8")
@@ -26,7 +20,7 @@ list2db <- c(
 names(list2db)
 
 # Initialize DB -----------------------------------------------------------
-if (!file.exists(here("gmobility.db"))) {
+if (!file.exists(here::here("gmobility.db"))) {
   conn <- dbConnect(RSQLite::SQLite(), "gmobility.db")
   
   map2(names(list2db), list2db, function(x, y) dbWriteTable(conn, name = x, value = y, overwrite = TRUE)) %>% 
