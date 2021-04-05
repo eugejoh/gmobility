@@ -13,6 +13,7 @@
 
 <title>Heatmaps</title>
 
+<script src="site_libs/header-attrs-2.1/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
@@ -22,15 +23,6 @@
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
-
-<style type="text/css">
-  code{white-space: pre-wrap;}
-  span.smallcaps{font-variant: small-caps;}
-  span.underline{text-decoration: underline;}
-  div.column{display: inline-block; vertical-align: top; width: 50%;}
-  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-  ul.task-list{list-style: none;}
-    </style>
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
@@ -76,7 +68,6 @@ h6 {
   text-align: left;
 }
 </style>
-
 
 
 
@@ -308,15 +299,14 @@ $(document).ready(function () {
 <li><a href="#heatmaps-by-province-and-territory">Percent Change in Mobility Heatmaps by province/territory</a></li>
 <li><a href="#heatmaps-in-ontario">Percent Change in Mobility Heatmaps by municipality in Ontario</a></li>
 </ul>
-
 <div id="heatmaps-by-province-and-territory" class="section level1">
 <h1>Heatmaps by Province and Territory</h1>
-<p>Percent change in mobility compared to <a href="https://support.google.com/covid19-mobility/answer/9824897?hl=en&amp;ref_topic=9822927#">baseline</a> as a 7-day moving average for provinces and territories. <img src="https://raw.githubusercontent.com/eugejoh/gmobility/main/output//heatmap_grocery_and_pharmacy_2021-02-28.png" /><!-- --><img src="https://raw.githubusercontent.com/eugejoh/gmobility/main/output//heatmap_parks_2021-02-28.png" /><!-- --><img src="https://raw.githubusercontent.com/eugejoh/gmobility/main/output//heatmap_residential_2021-02-28.png" /><!-- --><img src="https://raw.githubusercontent.com/eugejoh/gmobility/main/output//heatmap_retail_and_recreation_2021-02-28.png" /><!-- --><img src="https://raw.githubusercontent.com/eugejoh/gmobility/main/output//heatmap_transit_stations_2021-02-28.png" /><!-- --><img src="https://raw.githubusercontent.com/eugejoh/gmobility/main/output//heatmap_workplaces_2021-02-28.png" /><!-- --></p>
+<p>Percent change in mobility compared to <a href="https://support.google.com/covid19-mobility/answer/9824897?hl=en&amp;ref_topic=9822927#">baseline</a> as a 7-day moving average for provinces and territories. <img src="https://raw.githubusercontent.com/eugejoh/gmobility/main/output//heatmap_grocery_and_pharmacy_2021-03-31.png" /><!-- --><img src="https://raw.githubusercontent.com/eugejoh/gmobility/main/output//heatmap_parks_2021-03-31.png" /><!-- --><img src="https://raw.githubusercontent.com/eugejoh/gmobility/main/output//heatmap_residential_2021-03-31.png" /><!-- --><img src="https://raw.githubusercontent.com/eugejoh/gmobility/main/output//heatmap_retail_and_recreation_2021-03-31.png" /><!-- --><img src="https://raw.githubusercontent.com/eugejoh/gmobility/main/output//heatmap_transit_stations_2021-03-31.png" /><!-- --><img src="https://raw.githubusercontent.com/eugejoh/gmobility/main/output//heatmap_workplaces_2021-03-31.png" /><!-- --></p>
 </div>
 <div id="heatmaps-in-ontario" class="section level1">
 <h1>Heatmaps in Ontario</h1>
 <p>Percent change in mobility compared to <a href="https://support.google.com/covid19-mobility/answer/9824897?hl=en&amp;ref_topic=9822927#">baseline</a> as a 7-day moving average for municipalities across province of Ontario.</p>
-<p><img src="https://raw.githubusercontent.com/eugejoh/gmobility/main/output//heatmapON_grocery_and_pharmacy_2021-02-28.png" /><!-- --><img src="https://raw.githubusercontent.com/eugejoh/gmobility/main/output//heatmapON_parks_2021-02-28.png" /><!-- --><img src="https://raw.githubusercontent.com/eugejoh/gmobility/main/output//heatmapON_residential_2021-02-28.png" /><!-- --><img src="https://raw.githubusercontent.com/eugejoh/gmobility/main/output//heatmapON_retail_and_recreation_2021-02-28.png" /><!-- --><img src="https://raw.githubusercontent.com/eugejoh/gmobility/main/output//heatmapON_transit_stations_2021-02-28.png" /><!-- --><img src="https://raw.githubusercontent.com/eugejoh/gmobility/main/output//heatmapON_workplaces_2021-02-28.png" /><!-- --></p>
+<p><img src="https://raw.githubusercontent.com/eugejoh/gmobility/main/output//heatmapON_grocery_and_pharmacy_2021-03-31.png" /><!-- --><img src="https://raw.githubusercontent.com/eugejoh/gmobility/main/output//heatmapON_parks_2021-03-31.png" /><!-- --><img src="https://raw.githubusercontent.com/eugejoh/gmobility/main/output//heatmapON_residential_2021-03-31.png" /><!-- --><img src="https://raw.githubusercontent.com/eugejoh/gmobility/main/output//heatmapON_retail_and_recreation_2021-03-31.png" /><!-- --><img src="https://raw.githubusercontent.com/eugejoh/gmobility/main/output//heatmapON_transit_stations_2021-03-31.png" /><!-- --><img src="https://raw.githubusercontent.com/eugejoh/gmobility/main/output//heatmapON_workplaces_2021-03-31.png" /><!-- --></p>
 </div>
 
 
@@ -328,7 +318,7 @@ $(document).ready(function () {
 
 // add bootstrap table styles to pandoc tables
 function bootstrapStylePandocTables() {
-  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
 }
 $(document).ready(function () {
   bootstrapStylePandocTables();
