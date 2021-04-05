@@ -6,11 +6,16 @@ if (.Platform$OS.type == "windows") {
   loadfonts(quiet = TRUE)
 }
 invisible(sapply(list.files("R", full.names = T), source, encoding = "UTF-8"))
-colfnc <- colorRampPalette(colors = c("#2196f3", "#FBF6C3", "#CF0B0B"))
+colfnc <- colorRampPalette(colors = c("#124283", "#FBF6C3", "#CF0B0B"))
 
 theme_heatmap <- theme_minimal(base_family = "Calibri") +
-  theme(axis.text.x = element_text(angle = -45, hjust = 0, vjust = 1), panel.grid = element_blank(), panel.border = element_rect(fill = NA),
-        axis.ticks = element_line(), panel.grid.major.x = element_line(colour = "grey90"))
+  theme(
+    axis.text.x = element_text(size = rel(0.75), angle = -45, hjust = 0, vjust = 1),
+    panel.grid = element_blank(),
+    panel.border = element_rect(fill = NA),
+    axis.ticks = element_line(),
+    panel.grid.major.x = element_line(colour = "grey90")
+  )
 
 # connect to db
 conn <- dbConnect(RSQLite::SQLite(), "gmobility.db")
@@ -36,7 +41,7 @@ p_heatmaps <- prov_proc4plot %>%
   map(function(d) {
     ggplot(d, aes(x = date, y = reorder(prov_abb, desc(prov_abb)), fill = roll7)) +
       geom_tile(color = "white") +
-      scale_fill_gradient2(low = "#2196f3", mid = "#FBF6C3", high = "#CF0B0B", name = "Percent\nChange", na.value = NA) +
+      scale_fill_gradient2(low = "#124283", mid = "#FBF6C3", high = "#CF0B0B", name = "Percent\nChange", na.value = NA) +
       # scale_fill_gradientn(colours = colfnc(10), values = seq(0, 1, length.out = 10),  name = "Percent Change\n(7 day MA)", na.value = "white") +
       scale_x_date(date_breaks = "2 week", date_labels  = "%b %d %Y", expand = c(0.01,0)) +
       scale_y_discrete(expand = c(0, 0)) +
@@ -70,7 +75,7 @@ on_heatmaps <- on_proc4plot %>%
   map(function(d) {
     ggplot(d, aes(x = date, y = reorder(sub_region_2, desc(sub_region_2)), fill = roll7)) +
       geom_tile(color = "white") +
-      scale_fill_gradient2(low = "#2196f3", mid = "#FBF6C3", high = "#CF0B0B", name = "Percent\nChange", na.value = NA) +
+      scale_fill_gradient2(low = "#124283", mid = "#FBF6C3", high = "#CF0B0B", name = "Percent\nChange", na.value = NA) +
       # scale_fill_gradientn(colours = colfnc(10), values = seq(0, 1, length.out = 10),  name = "Percent Change\n(7 day MA)", na.value = "white") +
       scale_x_date(date_breaks = "2 week", date_labels  = "%b %d %Y", expand = c(0.01,0)) +
       scale_y_discrete(expand = c(0, 0)) +
